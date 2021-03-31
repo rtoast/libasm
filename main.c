@@ -1,22 +1,27 @@
-#include <stdio.h>
-#include <errno.h>
-size_t	ft_strlen(char *s);
-char	*ft_strcpy(char *dst, const char *src);
-size_t	ft_write(int fd, const void *buf, size_t count);
-size_t	ft_read(int fd, void *buf, size_t count);
-int main(void)
-{
-	char str[15];
+#include "libs.h"
 
-	ft_read(0, &str, 5);
-	printf("%s", str);
-	// ft_write(1111,"Hello,world!\n",13);
-	// if (errno)
-	// 	perror("oshibka");
-// 	printf("%s\n", ft_strcpy(str, "blab"));
-// 	char src[100] = "hedhejhjeh";
-// 	char dst[100];
-// 	dst[0] = 0;
-// 	ft_strcpy(dst,src);
-// 	printf("Src : %s\n",dst);
- }
+int	main(void)
+{
+	char	*buf;
+	char	*src;
+	char	dst[14];
+	char	str[15];
+
+	buf = "test";
+	printf("result cmp = %d\n", ft_strcmp(NULL, NULL));
+	printf("result cmp = %d\n", ft_strcmp("524", "523"));
+	printf("result cmp = %d\n\n", ft_strcmp("523", "524"));
+	printf("result len = %zu\n\n", ft_strlen(buf));
+	printf("result dup = %s\n\n", ft_strdup(buf));
+	ft_read(0, str, 5);
+	printf("read = %s\n", str);
+	ft_write(1, "write result\n", 13);
+	ft_write(1111, "error!\n\n", 13);
+	if (errno)
+		perror("error");
+	printf("\n");
+	src = "well done ^_^";
+	dst[0] = 0;
+	ft_strcpy(dst, src);
+	printf("result cpy = %s\n", dst);
+}
